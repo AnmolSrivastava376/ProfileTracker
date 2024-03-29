@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfilePageComponent } from './Components/profile-page/profile-page.component';
+import { HomeComponent } from './Components/home/home.component';
 
-const routes: Routes = [];
-
+const routes: Routes = [
+  { path: 'user/:id', component: ProfilePageComponent },
+  { path: 'home', component: HomeComponent},
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -1,0 +1,9 @@
+.clip{
+    clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+}
+.hoverbehave{
+    transition: all 0.2s;
+}
+.hoverbehave:hover{
+    transform: scale(1.04);
+}

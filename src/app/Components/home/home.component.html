@@ -1,1 +1,7 @@
-<p>home works!</p>
+<div class="w-[100vw] flex justify-center">
+    <div class="w-full h-full max-w-[750px] flex flex-col gap-[20px]">
+        <div *ngFor="let profile of profiles; let i = index">
+            <app-card-component [profile]="profile" [color]="getColorByIndex(i)"/>
+        </div>
+    </div>
+</div>
