@@ -4,12 +4,25 @@
             <div class="aspect-square h-[140px] rounded-[50%] z-[5] border-[0px] border-[#ffdd09]" style="background-image: url('https://www.ateneo.edu/sites/default/files/styles/large/public/2021-11/istockphoto-517998264-612x612.jpeg?itok=aMC1MRHJ'); background-size: 100% 100%; background-position: center;">
             </div>
             <div class="text-right flex flex-col justify-center">
-                <div class="text-[32px] leading-[32px] text-[#ffdd09]">{{selectedProfile?.name}}</div>
+                <div class="text-[32px] leading-[32px] font-[500] text-[#ffdd09]">{{selectedProfile?.name}}</div>
                 <div class="text-[24px] text-gray-300 leading-[32px]">[{{selectedProfile?.username}}]</div>
                 <div class="text-[20px] text-gray-500 leading-[32px] italic">{{selectedProfile?.email}}</div>
                 <div class="text-[18px] text-gray-500 leading-[32px] italic">{{selectedProfile?.phone}}</div>
             </div>
         </div>
-        <div class="w-full h-[1px] bg-[#4d4c4c]"></div>
+        <div class="w-full h-[1px]" style="background: linear-gradient(to right, transparent, #4d4c4c, transparent);"></div>
+        <div class="w-full h-fit flex justify-center">
+            <div class="w-full h-full py-[10px]">
+                <div class="text-[24px] font-[400] leading-[24px] text-[#ffdd09] mb-2">Works In</div>
+                <div class="">{{selectedProfile?.company?.name}}</div>
+                <div class="text-gray-300 italic">{{selectedProfile?.company?.catchPhrase}}</div>
+            </div>
+            <div class="h-[100px] w-full max-w-[1px] bg-[#4d4c4c]" style="background: linear-gradient(to bottom, transparent, #4d4c4c, transparent);"></div>
+            <div class="w-full h-full text-right py-[10px]">
+                <div class="text-[24px] font-[400] leading-[24px] text-[#ffdd09] mb-2">Location</div>
+                <div class="">Lat : {{selectedProfile?.address?.geo?.lat}}</div>
+                <div class="text-gray-300 italic">Lng : {{selectedProfile?.address?.geo?.lng}}</div>
+            </div>
+        </div>
     </div>
 </div>
