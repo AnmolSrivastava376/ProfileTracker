@@ -9,6 +9,6 @@ import { Profile } from '../../Profile';
 export class CardComponentComponent implements OnInit {
   ngOnInit(): void {
   }
-  @Input() profile: Profile | undefined;
-  @Input() color: String | undefined;
+  @Input() profile !: Profile;
+  @Input() color !: String;
 }

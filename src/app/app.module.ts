@@ -7,6 +7,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { ProfilePageComponent } from './Components/profile-page/profile-page.component';
 import { CardComponentComponent } from './Components/card-component/card-component.component';
+import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { CardComponentComponent } from './Components/card-component/card-compone
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideHttpClient(withFetch()) 
   ],
   bootstrap: [AppComponent]
 })

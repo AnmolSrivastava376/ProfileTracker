@@ -4,8 +4,8 @@ import { ProfilePageComponent } from './Components/profile-page/profile-page.com
 import { HomeComponent } from './Components/home/home.component';
 
 const routes: Routes = [
-  { path: 'user/:id', component: ProfilePageComponent },
-  { path: 'home', component: HomeComponent},
+  { path: '', component: HomeComponent},
+  { path: 'user', component: ProfilePageComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

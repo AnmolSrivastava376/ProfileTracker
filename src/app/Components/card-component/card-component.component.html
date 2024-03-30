@@ -1,18 +1,18 @@
-<a [routerLink]="['/user/',profile?.name]">
+<a routerLink="user">
     <div class="w-full relative h-[150px] cursor-pointer text-white rounded-[10px] overflow-hidden bg-[#262626] flex items-center justify-between hoverbehave">
         <div class="w-[30%] h-[150px] absolute clip" [style.background-color]="color"></div>
         <div class="aspect-square h-[120px] rounded-[50%] z-[5] ml-[20px]" style="background-image: url('https://www.ateneo.edu/sites/default/files/styles/large/public/2021-11/istockphoto-517998264-612x612.jpeg?itok=aMC1MRHJ'); background-size: 100% 100%; background-position: center;">
         </div>
         <div class="h-[150px] relative w-fit flex mr-[20px] gap-[10px]">
             <div class="h-[110px] flex flex-col text-white text-right py-[20px]">
-                <div class="text-[24px] font-[600]">{{profile?.name}} - ( {{profile?.username}} )</div>
-                <div class="text-[14px] italic opacity-80 leading-[16px] mb-[8px] hover:underline" [style.color]="color">{{profile?.email}}</div>
-                <div class="text-[16px]">{{profile?.phone}}</div>
-                <div class="text-[16px]">{{profile?.address?.city}}</div>
+                <div class="text-[24px] font-[600]">{{profile.name}} - ( {{profile.username}} )</div>
+                <div class="text-[14px] italic opacity-80 leading-[16px] mb-[8px] hover:underline" [style.color]="color">{{profile.email}}</div>
+                <div class="text-[16px]">{{profile.phone}}</div>
+                <div class="text-[16px]">{{profile.address.city}}</div>
             </div>
             <div class="h-[135px] w-[4px] self-end" [style.background-color]="color"></div>
             <div class="h-[100px] self-end w-[16px] flex items-start justify-start mb-[10px] text-[12px] text-gray-400" style="text-orientation: mixed; writing-mode: vertical-rl; transform: rotate(180deg); letter-spacing: 2px; line-height: 12px;">
-                {{profile?.company?.name}}
+                {{profile.company.name}}
             </div>
         </div>
     </div>
