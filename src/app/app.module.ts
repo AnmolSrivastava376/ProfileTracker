@@ -9,7 +9,6 @@ import { ProfilePageComponent } from './Components/profile-page/profile-page.com
 import { CardComponentComponent } from './Components/card-component/card-component.component';
 import { HttpClientModule } from '@angular/common/http';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +20,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     provideClientHydration(),

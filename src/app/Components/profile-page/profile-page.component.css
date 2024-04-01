@@ -1,0 +1,14 @@
+@media (max-width: 750px){
+    .maxlim{
+        max-width: 95vw;
+    }
+    .maxtext{
+        font-size: 24px;
+    }
+    .maxsmalltext{
+        font-size: 16px;
+    }
+    .hide{
+        display: none;
+    }
+}

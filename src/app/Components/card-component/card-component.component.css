@@ -7,3 +7,9 @@
 .hoverbehave:hover{
     transform: scale(1.04);
 }
+
+@media (max-width:750px){
+    .hide{
+        display: none;
+    }
+}
