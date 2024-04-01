@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       })
       .catch(error => {
         console.error('Error fetching profiles:', error);
-        this.loading = false; // Set loading to false even in case of error
+        this.loading = false; 
       });
   }
 
