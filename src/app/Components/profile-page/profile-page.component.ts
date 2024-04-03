@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Profile } from '../../Profile';
-import { DataService } from '../../data.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -10,23 +10,22 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit, OnDestroy {
-  profiles: Profile[] = [];
-  loading: boolean = true;
   selectedProfile: Profile | undefined;
+  loading: boolean = true;
   private profileSubscription: Subscription | undefined;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.profiles = this.dataService.getProfiles();
-      if (this.profiles.length === 0) {
-        this.profileSubscription = this.dataService.fetchProfiles().subscribe((profiles: Profile[]) => {
-          this.profiles = profiles;
-          this.fetchSelectedProfile(params);
+      const idParam: string | null = params.get('id');
+      if (idParam) {
+        const id: number = parseInt(idParam, 10);
+        this.loading = true;
+        this.profileSubscription = this.fetchProfileById(id).subscribe((profile: Profile) => {
+          this.selectedProfile = profile;
+          this.loading = false;
         });
-      } else {
-        this.fetchSelectedProfile(params);
       }
     });
   }
@@ -37,12 +36,8 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  fetchSelectedProfile(params: any): void {
-    const idParam: string | null = params.get('id');
-    if (idParam) {
-      const id: number = parseInt(idParam, 10);
-      this.selectedProfile = this.profiles.find(profile => profile.id === id);
-      this.loading = false;
-    }
+  fetchProfileById(id: number) {
+    const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+    return this.http.get<Profile>(url);
   }
 }
