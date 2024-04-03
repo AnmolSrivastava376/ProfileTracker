@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Profile } from '../../Profile';
 import { Subscription } from 'rxjs';
+import { ProfileService } from '../../profile.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -14,7 +14,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
   loading: boolean = true;
   private profileSubscription: Subscription | undefined;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private route: ActivatedRoute, private profileService: ProfileService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -22,7 +22,7 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
       if (idParam) {
         const id: number = parseInt(idParam, 10);
         this.loading = true;
-        this.profileSubscription = this.fetchProfileById(id).subscribe((profile: Profile) => {
+        this.profileSubscription = this.profileService.fetchProfileById(id).subscribe((profile: Profile) => {
           this.selectedProfile = profile;
           this.loading = false;
         });
@@ -34,10 +34,5 @@ export class ProfilePageComponent implements OnInit, OnDestroy {
     if (this.profileSubscription) {
       this.profileSubscription.unsubscribe();
     }
-  }
-
-  fetchProfileById(id: number) {
-    const url = `https://jsonplaceholder.typicode.com/users/${id}`;
-    return this.http.get<Profile>(url);
   }
 }
